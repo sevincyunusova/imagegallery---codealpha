@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="az">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-        content="Təbiət, şəhər, insanlar və memarlıq kateqoriyalarından ibarət vizual şəkil qalereyası.">
+        content="A curated visual gallery featuring nature, city, people, and architecture.">
 
-    <title>Galereya — Image Gallery</title>
+    <title>Gallery — Image Gallery</title>
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -18,32 +17,30 @@
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap"
         rel="stylesheet">
 
-    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <header class="site-header">
-        <p class="eyebrow">Fig. 01 — 12</p>
 
-        <h1>Galereya</h1>
+        <h1>Gallery</h1>
 
         <p class="subtitle">
-            Kiçik bir vizual kolleksiya. Kateqoriyaya görə süz,
-            şəkli aç, oxlarla gəz.
+            A small visual collection. Filter by category,
+            open an image, and navigate with the arrows.
         </p>
     </header>
 
 
-    <nav class="filters" id="filters" aria-label="Kateqoriya filtri">
+    <nav class="filters" id="filters" aria-label="Gallery filters">
 
         <button
             class="filter-btn active"
             type="button"
             data-filter="all"
             aria-pressed="true">
-            Hamısı
+            All
         </button>
 
         <button
@@ -51,7 +48,7 @@
             type="button"
             data-filter="nature"
             aria-pressed="false">
-            Təbiət
+            Nature
         </button>
 
         <button
@@ -59,7 +56,7 @@
             type="button"
             data-filter="city"
             aria-pressed="false">
-            Şəhər
+            City
         </button>
 
         <button
@@ -67,7 +64,7 @@
             type="button"
             data-filter="people"
             aria-pressed="false">
-            İnsanlar
+            People
         </button>
 
         <button
@@ -75,7 +72,7 @@
             type="button"
             data-filter="architecture"
             aria-pressed="false">
-            Memarlıq
+            Architecture
         </button>
 
     </nav>
@@ -85,24 +82,23 @@
         <section
             class="gallery"
             id="gallery"
-            aria-label="Şəkil qalereyası">
+            aria-label="Image gallery">
         </section>
     </main>
 
 
     <footer class="site-footer">
         <p>
-            Klaviatura:
+            Keyboard:
             <kbd>←</kbd>
             <kbd>→</kbd>
-            naviqasiya,
+            to navigate,
             <kbd>Esc</kbd>
-            bağlamaq üçün.
+            to close.
         </p>
     </footer>
 
 
-    <!-- Lightbox -->
     <div
         class="lightbox"
         id="lightbox"
@@ -113,25 +109,22 @@
 
         <div
             class="lightbox-backdrop"
-            id="lightboxBackdrop"
-            aria-hidden="true">
+            id="lightboxBackdrop">
         </div>
-
 
         <button
             class="lightbox-close"
             id="lightboxClose"
             type="button"
-            aria-label="Şəkli bağla">
+            aria-label="Close">
             &times;
         </button>
-
 
         <button
             class="lightbox-nav lightbox-prev"
             id="lightboxPrev"
             type="button"
-            aria-label="Əvvəlki şəkil">
+            aria-label="Previous image">
             &#10094;
         </button>
 
@@ -147,7 +140,6 @@
             </div>
 
             <figcaption>
-
                 <span
                     class="placard-index"
                     id="lightboxIndex">
@@ -157,15 +149,14 @@
                 <span
                     class="placard-title"
                     id="lightboxTitle">
-                    Başlıq
+                    Title
                 </span>
 
                 <span
                     class="placard-cat"
                     id="lightboxCat">
-                    Kateqoriya
+                    Category
                 </span>
-
             </figcaption>
 
         </figure>
@@ -175,7 +166,7 @@
             class="lightbox-nav lightbox-next"
             id="lightboxNext"
             type="button"
-            aria-label="Növbəti şəkil">
+            aria-label="Next image">
             &#10095;
         </button>
 
