@@ -67,6 +67,7 @@ const filterButtons = document.querySelectorAll(".filter-btn");
 let currentFilter = "all";
 let currentIndex = 0;
 
+
 function renderGallery() {
     galleryEl.innerHTML = "";
 
@@ -114,6 +115,7 @@ function renderGallery() {
         galleryEl.appendChild(card);
     });
 }
+
 filterButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
 
@@ -150,6 +152,7 @@ function visibleIndices() {
         )
         .map(({ index }) => index);
 }
+
 function openLightbox(index) {
     currentIndex = index;
 
@@ -215,29 +218,29 @@ function showPrev() {
     currentIndex = visible[prevPosition];
 
     updateLightboxContent();
+}
 
-    lightboxClose.addEventListener("click", closeLightbox);
+lightboxClose.addEventListener("click", closeLightbox);
 
-    lightboxBackdrop.addEventListener("click", closeLightbox);
+lightboxBackdrop.addEventListener("click", closeLightbox);
 
-    lightboxNext.addEventListener("click", showNext);
+lightboxNext.addEventListener("click", showNext);
 
-    lightboxPrev.addEventListener("click", showPrev);
+lightboxPrev.addEventListener("click", showPrev);
 
-    document.addEventListener("keydown", (e) => {
-        if (!lightbox.classList.contains("open")) return;
+document.addEventListener("keydown", (e) => {
+    if (!lightbox.classList.contains("open")) return;
 
-        if (e.key === "Escape") {
-            closeLightbox();
-        }
+    if (e.key === "Escape") {
+        closeLightbox();
+    }
 
-        if (e.key === "ArrowRight") {
-            showNext();
-        }
+    if (e.key === "ArrowRight") {
+        showNext();
+    }
 
-        if (e.key === "ArrowLeft") {
-            showPrev();
-        }
-    });
-
-    renderGallery();
+    if (e.key === "ArrowLeft") {
+        showPrev();
+    }
+});
+renderGallery();
