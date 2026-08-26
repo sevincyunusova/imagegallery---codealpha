@@ -81,6 +81,7 @@ function renderGallery() {
             "card appear" + (isVisible ? "" : " hidden");
 
         card.dataset.index = index;
+
         card.setAttribute("role", "button");
         card.setAttribute("tabindex", "0");
         card.setAttribute("aria-label", `Open ${img.title}`);
@@ -93,10 +94,6 @@ function renderGallery() {
             >
 
             <div class="card-overlay">
-                <span class="card-index">
-                    Fig. ${String(index + 1).padStart(2, "0")}
-                </span>
-
                 <span class="card-title">
                     ${img.title}
                 </span>
@@ -117,7 +114,6 @@ function renderGallery() {
         galleryEl.appendChild(card);
     });
 }
-
 filterButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
 
@@ -139,7 +135,6 @@ const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightboxImg");
 const lightboxTitle = document.getElementById("lightboxTitle");
 const lightboxCat = document.getElementById("lightboxCat");
-const lightboxIndex = document.getElementById("lightboxIndex");
 
 const lightboxClose = document.getElementById("lightboxClose");
 const lightboxPrev = document.getElementById("lightboxPrev");
@@ -155,7 +150,6 @@ function visibleIndices() {
         )
         .map(({ index }) => index);
 }
-
 function openLightbox(index) {
     currentIndex = index;
 
@@ -194,13 +188,7 @@ function updateLightboxContent() {
 
     lightboxTitle.textContent = data.title;
     lightboxCat.textContent = data.category;
-
-    lightboxIndex.textContent =
-        `Fig. ${String(currentIndex + 1).padStart(2, "0")}`;
 }
-
-
-// Show next image
 
 function showNext() {
     const visible = visibleIndices();
@@ -227,31 +215,29 @@ function showPrev() {
     currentIndex = visible[prevPosition];
 
     updateLightboxContent();
-}
 
-lightboxClose.addEventListener("click", closeLightbox);
+    lightboxClose.addEventListener("click", closeLightbox);
 
-lightboxBackdrop.addEventListener("click", closeLightbox);
+    lightboxBackdrop.addEventListener("click", closeLightbox);
 
-lightboxNext.addEventListener("click", showNext);
+    lightboxNext.addEventListener("click", showNext);
 
-lightboxPrev.addEventListener("click", showPrev);
+    lightboxPrev.addEventListener("click", showPrev);
 
+    document.addEventListener("keydown", (e) => {
+        if (!lightbox.classList.contains("open")) return;
 
-document.addEventListener("keydown", (e) => {
-    if (!lightbox.classList.contains("open")) return;
+        if (e.key === "Escape") {
+            closeLightbox();
+        }
 
-    if (e.key === "Escape") {
-        closeLightbox();
-    }
+        if (e.key === "ArrowRight") {
+            showNext();
+        }
 
-    if (e.key === "ArrowRight") {
-        showNext();
-    }
+        if (e.key === "ArrowLeft") {
+            showPrev();
+        }
+    });
 
-    if (e.key === "ArrowLeft") {
-        showPrev();
-    }
-});
-
-renderGallery();
+    renderGallery();
